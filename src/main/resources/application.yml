@@ -3,3 +3,11 @@
 #    console: "%d - %msg %n"
 #  file:
 #    name: /mfw_data/imooc_log/seller.log
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.1.10:3306/seller?characterEncoding=utf-8
+    username: root
+    password: 123456
+  jpa:
+    show-sql: true

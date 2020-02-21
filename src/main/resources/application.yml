@@ -1,0 +1,5 @@
+#logging:
+#  pattern:
+#    console: "%d - %msg %n"
+#  file:
+#    name: /mfw_data/imooc_log/seller.log

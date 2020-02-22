@@ -52,7 +52,7 @@ public class ProductCategoryRepositoryTest {
     public void findProductCategoryByCategoryTypeInTest()
     {
         List<Integer> list = Arrays.asList(4,6,8);
-        List<ProductCategory> result = repository.findByCategoryTypeNotIn(list);
+        List<ProductCategory> result = repository.findByCategoryTypeIn(list);
         Assert.assertNotEquals(0,result.size());
     }
 }

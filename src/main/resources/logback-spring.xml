@@ -3,8 +3,11 @@
     <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <pattern>
-                %d - == -  %msg%n
+<!--                %d - == -  %msg%n-->
+                %d{HH:mm:ss.SSS} %-5level %logger{80} - %msg%n
             </pattern>
+
+
         </layout>
 
     </appender>

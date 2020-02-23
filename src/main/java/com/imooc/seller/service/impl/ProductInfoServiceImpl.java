@@ -23,7 +23,7 @@ public class ProductInfoServiceImpl implements ProductInfoService {
 
     @Override
     public List<ProductInfo> findOnlineList(Integer productStatus) {
-        return repository.findProductInfoByProductStatus(ProductStatusEnums.DONW.getCode());
+        return repository.findProductInfoByProductStatus(ProductStatusEnums.UP.getCode());
     }
 
     @Override

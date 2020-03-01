@@ -1,5 +1,6 @@
 package com.imooc.seller.service;
 
+import com.imooc.seller.DTO.CartDTO;
 import com.imooc.seller.dataobject.ProductInfo;
 import java.util.List;
 import org.springframework.data.domain.Page;
@@ -19,6 +20,8 @@ public interface ProductInfoService {
     ProductInfo save(ProductInfo productInfo);
 
     // 加库存
+    void increaseStock(List<CartDTO> cartDTOList);
 
     // 减库存
+    void decreaseStock(List<CartDTO> cartDTOList);
 }

@@ -9,7 +9,7 @@ public class ResultVOUtils {
     public static ResultVO success(Object object) {
         ResultVO resultVO = new ResultVO();
         resultVO.setCode(ResultEnums.SUCCESS.getCode());
-        resultVO.setMsg(ResultEnums.SUCCESS.getMsg());
+        resultVO.setMsg(ResultEnums.SUCCESS.getMessage());
         resultVO.setData(object);
         return resultVO;
     }

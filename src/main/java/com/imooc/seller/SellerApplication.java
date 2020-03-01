@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SellerApplication {
 
     public static void main(String[] args) {
+        System.out.println("============= Application Start ==========");
         SpringApplication.run(SellerApplication.class, args);
+        System.out.println("============= Application End ==========");
     }
 
 }

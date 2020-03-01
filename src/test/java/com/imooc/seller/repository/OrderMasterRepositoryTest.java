@@ -12,6 +12,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
@@ -42,7 +45,8 @@ public class OrderMasterRepositoryTest {
 
     @Test
     public void findByBuyerOpenid() {
-        List<OrderMaster> result = repository.findByBuyerOpenid(BUYEROPENID);
-        Assert.assertNotEquals(0, result.size());
+        PageRequest pageRequest = PageRequest.of(1,2);
+        Page<OrderMaster> result = repository.findByBuyerOpenid(BUYEROPENID, pageRequest);
+        Assert.assertNotEquals(0, result.getTotalElements());
     }
 }

@@ -17,4 +17,14 @@ public class SellerException extends  RuntimeException{
         super(resultEnums.getMessage());
         this.code = resultEnums.getCode();
     }
+
+    /**
+     * Constructs a new runtime exception with {@code null} as its
+     * detail message.  The cause is not initialized, and may subsequently be
+     * initialized by a call to {@link #initCause}.
+     */
+    public SellerException(Integer code, String message) {
+        super(message);
+        this.code = code;
+    }
 }

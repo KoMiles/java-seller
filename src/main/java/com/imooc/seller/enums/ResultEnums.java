@@ -13,6 +13,7 @@ public enum ResultEnums {
     ORDER_PAY_UPDATE_FAIL(17,"支付状态更新失败"),
     CART_NOT_EMPTY(18,"购物车不能为空"),
     ORDER_OWNER_ERROR(19,"不是你的订单"),
+    WECHART_MP_ERROR(20,"微信授权错误"),
 
     ;
 

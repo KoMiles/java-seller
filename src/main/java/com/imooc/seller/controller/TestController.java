@@ -16,17 +16,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @GetMapping("/hello")
-//    public void hello(@RequestParam("id") Integer id, HttpServletRequest request)
-    public void hello(HttpServletRequest request)
+    public void hello(@RequestParam("id") Integer id)
+//    public void hello(HttpServletRequest request)
     {
-        if(check(request)) {
-            System.out.println("OK");
-        } else {
-            System.out.println("error");
-        }
+//        if(check(request)) {
+//            System.out.println("OK");
+//        } else {
+//            System.out.println("error");
+//        }
 //        String id = request.getParameter("id");
-//        log.info("id:{}", id);
-//        System.out.println(id);
+        log.info("id:{}", id);
+        System.out.println(id);
     }
 
     @GetMapping("/list")

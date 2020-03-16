@@ -7,18 +7,28 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.1.8:3306/seller?characterEncoding=utf-8
+    url: jdbc:mysql://192.168.1.9:3306/seller?characterEncoding=utf-8
     username: root
     password: 123456
   jpa:
     show-sql: true
   jackson:
     default-property-inclusion: non_null
+  freemarker:
+    suffix: .ftl
 server:
   servlet:
     context-path: /sell
   port: 9088
 
 wechat:
-  mpAppId: wx0a8f8e9e240e1b01
+#  mpAppId: wx0a8f8e9e240e1b01
+  mpAppId: wxd898fcb01713c658
   mpAppSecret: 209b93beada12f8174ffecf2246acf62
+  mchId: 1483469312
+  mchKey: 098F6BCD4621D373CADE4E832627B4F6
+  keyPath: /Users/mfw/Library/key-all/h5.p12
+  notifyUrl: http://komiles.nat100.top/sell/pay/notify
+
+
+

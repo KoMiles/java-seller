@@ -27,8 +27,7 @@ public class OrderMasterRepositoryTest {
     private final static String BUYEROPENID = "88888888";
 
     @Test
-    public void save()
-    {
+    public void save() {
         OrderMaster orderMaster = new OrderMaster();
         orderMaster.setOrderId("222222");
         orderMaster.setBuyerName("张三");
@@ -45,7 +44,7 @@ public class OrderMasterRepositoryTest {
 
     @Test
     public void findByBuyerOpenid() {
-        PageRequest pageRequest = PageRequest.of(1,2);
+        PageRequest pageRequest = PageRequest.of(1, 2);
         Page<OrderMaster> result = repository.findByBuyerOpenid(BUYEROPENID, pageRequest);
         Assert.assertNotEquals(0, result.getTotalElements());
     }

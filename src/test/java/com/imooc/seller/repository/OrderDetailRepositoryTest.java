@@ -20,8 +20,7 @@ public class OrderDetailRepositoryTest {
     private OrderDetailRepository repository;
 
     @Test
-    public void save()
-    {
+    public void save() {
         OrderDetail orderDetail = new OrderDetail();
         orderDetail.setDetailId("123456");
         orderDetail.setOrderId("11111111");

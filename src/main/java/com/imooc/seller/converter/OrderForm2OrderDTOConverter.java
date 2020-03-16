@@ -14,8 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class OrderForm2OrderDTOConverter {
 
-    public static OrderDTO convert(OrderForm orderForm)
-    {
+    public static OrderDTO convert(OrderForm orderForm) {
         Gson gson = new Gson();
 
         OrderDTO orderDTO = new OrderDTO();
@@ -27,12 +26,12 @@ public class OrderForm2OrderDTOConverter {
         List<OrderDetail> orderDetailList = new ArrayList<>();
 
         try {
-            orderDetailList = gson.fromJson(orderForm.getItems(),new TypeToken<List<OrderDetail>>(){}.getType());
+            orderDetailList = gson.fromJson(orderForm.getItems(), new TypeToken<List<OrderDetail>>() {
+            }.getType());
         } catch (Exception e) {
             log.info("【对象转换错误】String:{}", orderForm.getItems());
             throw new SellerException(ResultEnums.PARAMS_ERROR);
         }
-
 
         orderDTO.setOrderDetailList(orderDetailList);
         return orderDTO;

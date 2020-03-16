@@ -20,8 +20,7 @@ public class ProductInfoRepositoryTest {
     ProductInfoRepository repository;
 
     @Test
-    public void saveTest()
-    {
+    public void saveTest() {
         ProductInfo productInfo = new ProductInfo();
         productInfo.setProductId("123456");
         productInfo.setProductName("鸡蛋汤");
@@ -39,6 +38,6 @@ public class ProductInfoRepositoryTest {
     @Test
     public void findProductInfoByCategoryType() {
         List<ProductInfo> productInfoList = repository.findProductInfoByProductStatus(0);
-        Assert.assertNotEquals(0,productInfoList.size());
+        Assert.assertNotEquals(0, productInfoList.size());
     }
 }

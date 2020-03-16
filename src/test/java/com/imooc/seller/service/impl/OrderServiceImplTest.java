@@ -68,8 +68,8 @@ public class OrderServiceImplTest {
 
     @Test
     public void findList() {
-        PageRequest pageRequest = PageRequest.of(0,2);
-        Page<OrderDTO> orderDTOPage = orderService.findList(BUYEROPENID,pageRequest);
+        PageRequest pageRequest = PageRequest.of(0, 2);
+        Page<OrderDTO> orderDTOPage = orderService.findList(BUYEROPENID, pageRequest);
         Assert.assertNotEquals(0, orderDTOPage.getTotalElements());
     }
 
@@ -77,20 +77,20 @@ public class OrderServiceImplTest {
     public void cancel() {
         OrderDTO orderDTO = orderService.findOne(ORDERID);
         OrderDTO result = orderService.cancel(orderDTO);
-        Assert.assertEquals(OrderStatusEnums.CANCEL_ORDER.getCode(),result.getOrderStatus());
+        Assert.assertEquals(OrderStatusEnums.CANCEL_ORDER.getCode(), result.getOrderStatus());
     }
 
     @Test
     public void finish() {
         OrderDTO orderDTO = orderService.findOne(ORDERID);
         OrderDTO result = orderService.finish(orderDTO);
-        Assert.assertEquals(OrderStatusEnums.FINISHED_ORDER.getCode(),result.getOrderStatus());
+        Assert.assertEquals(OrderStatusEnums.FINISHED_ORDER.getCode(), result.getOrderStatus());
     }
 
     @Test
     public void paid() {
         OrderDTO orderDTO = orderService.findOne(ORDERID);
         OrderDTO result = orderService.paid(orderDTO);
-        Assert.assertEquals(PayStatusEnums.SUCCESS_PAY.getCode(),result.getPayStatus());
+        Assert.assertEquals(PayStatusEnums.SUCCESS_PAY.getCode(), result.getPayStatus());
     }
 }

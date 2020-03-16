@@ -30,9 +30,9 @@ public class TestController {
     }
 
     @GetMapping("/list")
-    public void list(@RequestParam("page") Integer page, @RequestParam("pageSize") Integer pageSize, HttpServletRequest request)
-    {
-        if(check(request)) {
+    public void list(@RequestParam("page") Integer page, @RequestParam("pageSize") Integer pageSize,
+            HttpServletRequest request) {
+        if (check(request)) {
             System.out.println("OK");
         } else {
             System.out.println("error");
@@ -42,15 +42,14 @@ public class TestController {
     }
 
     @GetMapping("check")
-    public boolean check(HttpServletRequest request)
-    {
+    public boolean check(HttpServletRequest request) {
         String uri = request.getRequestURI();
 //        ArrayList<String> urlList = new ArrayList<>();
 //        urlList.add("/sell/test2");
 //        urlList.add("/sell/test1");
         List<String> urlList = Arrays.asList("/sell/test2", "/sell/test");
-        for (String path:urlList) {
-            if(uri.contains(path)) {
+        for (String path : urlList) {
+            if (uri.contains(path)) {
                 return true;
             }
         }

@@ -22,8 +22,7 @@ public class WechatMpConfig {
     }
 
     @Bean
-    public WxMpConfigStorage wxMpConfigStorage()
-    {
+    public WxMpConfigStorage wxMpConfigStorage() {
         WxMpDefaultConfigImpl wxMpConfigStorage = new WxMpDefaultConfigImpl();
         wxMpConfigStorage.setAppId(wechatAccountConfig.getMpAppId());
         wxMpConfigStorage.setSecret(wechatAccountConfig.getMpAppSecret());

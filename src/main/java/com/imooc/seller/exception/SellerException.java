@@ -2,7 +2,7 @@ package com.imooc.seller.exception;
 
 import com.imooc.seller.enums.ResultEnums;
 
-public class SellerException extends  RuntimeException{
+public class SellerException extends RuntimeException {
 
     private Integer code;
 

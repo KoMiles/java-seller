@@ -3,7 +3,7 @@
     <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <pattern>
-<!--                %d - == -  %msg%n-->
+                <!--                %d - == -  %msg%n-->
                 %d{HH:mm:ss.SSS} %-5level %logger{80} - %msg%n
             </pattern>
 
@@ -23,9 +23,9 @@
                 %msg%n
             </pattern>
         </encoder>
-<!--        滚动策略-->
+        <!--        滚动策略-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-<!--            文件路径-->
+            <!--            文件路径-->
             <fileNamePattern>
                 /mfw_data/imooc_log/seller/info.%d.log
             </fileNamePattern>
@@ -35,7 +35,7 @@
 
 
     <appender name="fileErrorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
-<!--        根据范围过滤-->
+        <!--        根据范围过滤-->
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>ERROR</level>
         </filter>

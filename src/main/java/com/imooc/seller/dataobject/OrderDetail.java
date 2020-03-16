@@ -11,6 +11,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @Data
 @DynamicUpdate
 public class OrderDetail {
+
     @Id
     private String detailId;
 

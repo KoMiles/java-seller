@@ -22,25 +22,22 @@ public class ProductCategoryRepositoryTest {
 
 
     @Test
-    public void findOneTest()
-    {
+    public void findOneTest() {
         ProductCategory productCategory = repository.findById(1).orElse(null);
         System.out.println(productCategory.toString());
     }
 
     @Test
     @Transactional
-    public void addTest()
-    {
-        ProductCategory productCategory = new ProductCategory("吃喝榜",3);
+    public void addTest() {
+        ProductCategory productCategory = new ProductCategory("吃喝榜", 3);
         ProductCategory result = repository.save(productCategory);
 
         Assert.assertNotNull(result);
     }
 
     @Test
-    public void updateTest()
-    {
+    public void updateTest() {
         ProductCategory productCategory = repository.findById(1).orElse(null);
         productCategory.setCategoryType(12);
         repository.save(productCategory);
@@ -49,10 +46,9 @@ public class ProductCategoryRepositoryTest {
 
 
     @Test
-    public void findProductCategoryByCategoryTypeInTest()
-    {
-        List<Integer> list = Arrays.asList(4,6,8);
+    public void findProductCategoryByCategoryTypeInTest() {
+        List<Integer> list = Arrays.asList(4, 6, 8);
         List<ProductCategory> result = repository.findByCategoryTypeIn(list);
-        Assert.assertNotEquals(0,result.size());
+        Assert.assertNotEquals(0, result.size());
     }
 }

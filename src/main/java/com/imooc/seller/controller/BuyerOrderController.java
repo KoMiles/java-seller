@@ -40,22 +40,21 @@ public class BuyerOrderController {
 
     // 创建订单
     @PostMapping("/create")
-    public ResultVO<Map<String,String>> createOrder(@Valid OrderForm orderForm, BindingResult bindingResult)
-    {
-        if(bindingResult.hasErrors()) {
+    public ResultVO<Map<String, String>> createOrder(@Valid OrderForm orderForm, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             log.info("【创建订单】参数不正确, orderForm:{}", orderForm);
-            throw new SellerException(ResultEnums.PARAMS_ERROR.getCode(),bindingResult.getFieldError().getDefaultMessage());
+            throw new SellerException(ResultEnums.PARAMS_ERROR.getCode(),
+                    bindingResult.getFieldError().getDefaultMessage());
         }
 
         OrderDTO orderDTO = OrderForm2OrderDTOConverter.convert(orderForm);
-        if(CollectionUtils.isEmpty(orderDTO.getOrderDetailList())) {
-            log.error("【创建订单】购物车不能为空，orderDTO:{}",orderDTO);
+        if (CollectionUtils.isEmpty(orderDTO.getOrderDetailList())) {
+            log.error("【创建订单】购物车不能为空，orderDTO:{}", orderDTO);
             throw new SellerException(ResultEnums.CART_NOT_EMPTY);
         }
         OrderDTO orderResult = orderService.create(orderDTO);
 
-
-        Map<String,String> map = new HashMap<>();
+        Map<String, String> map = new HashMap<>();
 
         map.put("orderId", orderResult.getOrderId());
         return ResultVOUtils.success(map);
@@ -65,15 +64,15 @@ public class BuyerOrderController {
     // 订单列表
     @GetMapping("/list")
     public ResultVO<OrderDTO> listOrder(@RequestParam("openid") String openid,
-            @RequestParam(value = "page",defaultValue = "0") Integer page,
-            @RequestParam(value = "size",defaultValue = "10") Integer size){
+            @RequestParam(value = "page", defaultValue = "0") Integer page,
+            @RequestParam(value = "size", defaultValue = "10") Integer size) {
 
-        if(StringUtils.isEmpty(openid)) {
-            log.error("【订单列表】openid不能为空，openid:{}",openid);
+        if (StringUtils.isEmpty(openid)) {
+            log.error("【订单列表】openid不能为空，openid:{}", openid);
             throw new SellerException(ResultEnums.PARAMS_ERROR);
         }
-        PageRequest pageRequest = PageRequest.of(page,size);
-        Page<OrderDTO> orderDTOPage =  orderService.findList(openid, pageRequest);
+        PageRequest pageRequest = PageRequest.of(page, size);
+        Page<OrderDTO> orderDTOPage = orderService.findList(openid, pageRequest);
 
         return ResultVOUtils.success(orderDTOPage.getContent());
     }
@@ -81,14 +80,14 @@ public class BuyerOrderController {
 
     // 订单详情
     @GetMapping("/detail")
-    public ResultVO<OrderDTO> detailOrder(@RequestParam("openid") String openid, @RequestParam("orderId") String orderId)
-    {
-        if(StringUtils.isEmpty(openid)) {
-            log.error("【订单详情】openId不能为空，openid:{}",openid);
+    public ResultVO<OrderDTO> detailOrder(@RequestParam("openid") String openid,
+            @RequestParam("orderId") String orderId) {
+        if (StringUtils.isEmpty(openid)) {
+            log.error("【订单详情】openId不能为空，openid:{}", openid);
             throw new SellerException(ResultEnums.PARAMS_ERROR);
         }
-        if(StringUtils.isEmpty(orderId)) {
-            log.error("【订单详情】orderid不能为空，orderId:{}",orderId);
+        if (StringUtils.isEmpty(orderId)) {
+            log.error("【订单详情】orderid不能为空，orderId:{}", orderId);
             throw new SellerException(ResultEnums.PARAMS_ERROR);
         }
         OrderDTO orderDTO = buyerService.findOrderOne(openid, orderId);
@@ -97,14 +96,13 @@ public class BuyerOrderController {
 
     // 订单取消
     @PostMapping("/cancel")
-    public ResultVO cancelOrder(@RequestParam("openid") String openid, @RequestParam("orderId") String orderId)
-    {
-        if(StringUtils.isEmpty(openid)) {
-            log.error("【取消订单】openId不能为空，openid:{}",openid);
+    public ResultVO cancelOrder(@RequestParam("openid") String openid, @RequestParam("orderId") String orderId) {
+        if (StringUtils.isEmpty(openid)) {
+            log.error("【取消订单】openId不能为空，openid:{}", openid);
             throw new SellerException(ResultEnums.PARAMS_ERROR);
         }
-        if(StringUtils.isEmpty(orderId)) {
-            log.error("【取消订单】orderid不能为空，orderId:{}",orderId);
+        if (StringUtils.isEmpty(orderId)) {
+            log.error("【取消订单】orderid不能为空，orderId:{}", orderId);
             throw new SellerException(ResultEnums.PARAMS_ERROR);
         }
         buyerService.cancelOrder(openid, orderId);

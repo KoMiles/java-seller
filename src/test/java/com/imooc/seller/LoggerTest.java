@@ -13,8 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class LoggerTest {
 
     @Test
-    public void test1()
-    {
+    public void test1() {
         log.info("info...");
         log.info("info2...");
         log.error("error...");

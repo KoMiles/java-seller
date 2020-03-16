@@ -15,8 +15,7 @@ import org.springframework.web.client.RestTemplate;
 public class WeixinController {
 
     @GetMapping("/auth")
-    public void auth(@RequestParam("code") String code)
-    {
+    public void auth(@RequestParam("code") String code) {
         log.info("进入auth方法");
         log.info("回调获取code:{}", code);
 

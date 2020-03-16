@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface ProductInfoService {
+
     // 查找一个商品
     ProductInfo findOne(String Id);
 

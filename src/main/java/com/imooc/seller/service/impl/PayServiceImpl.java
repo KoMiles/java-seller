@@ -18,12 +18,11 @@ public class PayServiceImpl implements PayService {
     @Autowired
     private BestPayServiceImpl bestPayService;
 
-    private static String ORDERNAME="微信支付订单名称";
+    private static String ORDERNAME = "微信支付订单名称";
 
     private static String OPENID = "oTgZpwY_D0o3IU6kLE4LAYkvzUEk";
 
-    public PayResponse create(OrderDTO orderDTO)
-    {
+    public PayResponse create(OrderDTO orderDTO) {
         PayRequest payRequest = new PayRequest();
         payRequest.setPayTypeEnum(BestPayTypeEnum.WXPAY_MP);
         payRequest.setOrderId(orderDTO.getOrderId());

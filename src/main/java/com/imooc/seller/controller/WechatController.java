@@ -31,12 +31,12 @@ public class WechatController {
     private WechatAccountConfig wechatAccountConfig;
 
     @GetMapping("/authorize")
-    public String authorize(@RequestParam("returnUrl") String returnUrl){
+    public String authorize(@RequestParam("returnUrl") String returnUrl) {
         String url = "http://komiles.nat100.top/sell/wechat/userInfo";
         String redirectUrl = wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_USERINFO,
                 URLEncoder.encode(returnUrl));
         log.info("【微信网页授权】result:{}", redirectUrl);
-        return "redirect:"+redirectUrl;
+        return "redirect:" + redirectUrl;
     }
 
     @GetMapping("/userInfo")
@@ -45,13 +45,13 @@ public class WechatController {
         try {
             wxMpOAuth2AccessToken = wxMpService.oauth2getAccessToken(code);
 
-        } catch (WxErrorException e){
+        } catch (WxErrorException e) {
             log.error("【获取用户信息】{}", e.getMessage());
             throw new SellerException(ResultEnums.WECHART_MP_ERROR.getCode(), e.getError().getErrorMsg());
         }
         String openid = wxMpOAuth2AccessToken.getOpenId();
         log.info("【获取用户信息】openid:{}", openid);
 
-        return "redirect:"+returnUrl+"?openid="+openid;
+        return "redirect:" + returnUrl + "?openid=" + openid;
     }
 }

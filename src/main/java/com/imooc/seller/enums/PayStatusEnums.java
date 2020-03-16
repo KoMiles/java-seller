@@ -4,9 +4,8 @@ import lombok.Getter;
 
 @Getter
 public enum PayStatusEnums {
-    NOT_PAY(0,"未支付"),
-    SUCCESS_PAY(1,"已支付")
-    ;
+    NOT_PAY(0, "未支付"),
+    SUCCESS_PAY(1, "已支付");
     private Integer code;
 
     private String message;

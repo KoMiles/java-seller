@@ -13,15 +13,14 @@ public class WechatPayConfig {
     private WechatAccountConfig wechatAccountConfig;
 
     @Bean
-    public BestPayServiceImpl bestPayService(){
+    public BestPayServiceImpl bestPayService() {
         BestPayServiceImpl bestPayService = new BestPayServiceImpl();
         bestPayService.setWxPayConfig(wxPayConfig());
         return bestPayService;
     }
 
     @Bean
-    public WxPayConfig wxPayConfig()
-    {
+    public WxPayConfig wxPayConfig() {
         WxPayConfig wxPayConfig = new WxPayConfig();
         wxPayConfig.setAppId(wechatAccountConfig.getMpAppId());//公众号Id
         wxPayConfig.setAppSecret(wechatAccountConfig.getMpAppSecret());
@@ -29,6 +28,6 @@ public class WechatPayConfig {
         wxPayConfig.setMchKey(wechatAccountConfig.getMchKey());
         wxPayConfig.setKeyPath(wechatAccountConfig.getKeyPath());
         wxPayConfig.setNotifyUrl(wechatAccountConfig.getNotifyUrl());
-        return  wxPayConfig;
+        return wxPayConfig;
     }
 }

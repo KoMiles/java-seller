@@ -22,7 +22,7 @@ server:
   port: 9088
 
 wechat:
-#  mpAppId: wx0a8f8e9e240e1b01
+  #  mpAppId: wx0a8f8e9e240e1b01
   mpAppId: wxd898fcb01713c658
   mpAppSecret: 209b93beada12f8174ffecf2246acf62
   mchId: 1483469312

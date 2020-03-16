@@ -29,8 +29,7 @@ public class BuyerProductController {
     private CategoryServiceImpl categoryService;
 
     @GetMapping("/list")
-    public ResultVO list()
-    {
+    public ResultVO list() {
         // 查询所有上架商品
         List<ProductInfo> productInfoList = productInfoService.findOnlineList(ProductStatusEnums.UP.getCode());
 //        System.out.println(productInfoList.toString());
@@ -42,20 +41,21 @@ public class BuyerProductController {
 //        }
 //        categoryService.findByCategoryTypeIn(categoryIdList);
 //         精简写法 lambda 表达式
-        List<Integer> categoryIdList = productInfoList.stream().map(e -> e.getCategoryType()).collect(Collectors.toList());
+        List<Integer> categoryIdList = productInfoList.stream().map(e -> e.getCategoryType())
+                .collect(Collectors.toList());
 
         List<ProductCategory> productCategoryList = categoryService.findByCategoryTypeIn(categoryIdList);
         // 数据拼装
 
         List<ProductVO> productVOList = new ArrayList<>();
-        for(ProductCategory productCategory : productCategoryList) {
+        for (ProductCategory productCategory : productCategoryList) {
             ProductVO productVO = new ProductVO();
             productVO.setCategoryType(productCategory.getCategoryType());
             productVO.setCategoryName(productCategory.getCategoryName());
 
             List<ProductInfoVO> productInfoVOList = new ArrayList<>();
-            for(ProductInfo productInfo : productInfoList) {
-                if(productInfo.getCategoryType().equals(productCategory.getCategoryType())) {
+            for (ProductInfo productInfo : productInfoList) {
+                if (productInfo.getCategoryType().equals(productCategory.getCategoryType())) {
                     ProductInfoVO productInfoVO = new ProductInfoVO();
                     BeanUtils.copyProperties(productInfo, productInfoVO);
                     productInfoVOList.add(productInfoVO);

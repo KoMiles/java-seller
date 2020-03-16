@@ -44,10 +44,10 @@ public class ProductInfoServiceImpl implements ProductInfoService {
     @Override
     @Transactional
     public void increaseStock(List<CartDTO> cartDTOList) {
-        for(CartDTO cartDTO: cartDTOList) {
+        for (CartDTO cartDTO : cartDTOList) {
             // 判断商品是否存在
             ProductInfo productInfo = repository.getOne(cartDTO.getProductId());
-            if(productInfo == null) {
+            if (productInfo == null) {
                 throw new SellerException(ResultEnums.PRODUCT_NOT_EXIST);
             }
 
@@ -61,15 +61,15 @@ public class ProductInfoServiceImpl implements ProductInfoService {
     @Override
     @Transactional
     public void decreaseStock(List<CartDTO> cartDTOList) {
-        for(CartDTO cartDTO: cartDTOList) {
+        for (CartDTO cartDTO : cartDTOList) {
             // 判断商品是否存在
             ProductInfo productInfo = repository.getOne(cartDTO.getProductId());
-            if(productInfo == null) {
+            if (productInfo == null) {
                 throw new SellerException(ResultEnums.PRODUCT_NOT_EXIST);
             }
 
             Integer result = productInfo.getProductStock() - cartDTO.getProductQuantity();
-            if(result < 0) {
+            if (result < 0) {
                 throw new SellerException(ResultEnums.PRODUCT_STOCK_ERROR);
             }
 

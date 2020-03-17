@@ -32,7 +32,7 @@ public class PayController {
     private OrderServiceImpl orderService;
 
     @Autowired
-    private PayServiceImpl payService;
+    private PayService payService;
 
     @GetMapping("/create")
     public ModelAndView create(@RequestParam("orderId") String orderId,

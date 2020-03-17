@@ -10,7 +10,6 @@ public class JsonTestUtil {
         gsonBuilder.setPrettyPrinting();
         Gson gson = gsonBuilder.create();
         return gson.toJson(object);
-
     }
 
 }

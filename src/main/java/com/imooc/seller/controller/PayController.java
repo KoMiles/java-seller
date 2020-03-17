@@ -7,6 +7,9 @@ import com.imooc.seller.service.OrderService;
 import com.imooc.seller.service.PayService;
 import com.imooc.seller.service.impl.OrderServiceImpl;
 import com.lly835.bestpay.model.PayResponse;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -40,12 +44,20 @@ public class PayController {
 
         PayResponse payResponse = payService.create(orderDTO);
         map.put("payResponse", payResponse);
-        map.put("returnUrl", returnUrl);
+        log.info("【创建订单】返回url地址-returnUrl:{}", returnUrl);
+        try {
+            String decodeUrl = URLDecoder.decode(returnUrl, "UTF-8");
+            log.info("【创建订单】解析之后的地址-decodeUrl:{}", decodeUrl);
+            map.put("returnUrl", decodeUrl);
+        } catch (UnsupportedEncodingException e) {
+            log.error("[支付订单] 解析返回地址错误, returnUrl={}", returnUrl);
+            e.printStackTrace();
+        }
         return new ModelAndView("pay/create", map);
     }
 
     @PostMapping("/notify")
-    public void notifyUrl() {
+    public void notifyUrl(@ResponseBody String notifyData) {
 
     }
 }

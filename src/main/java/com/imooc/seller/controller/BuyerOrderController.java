@@ -38,6 +38,8 @@ public class BuyerOrderController {
     @Autowired
     private BuyerServiceImpl buyerService;
 
+    private final  static String PAY_OPENID = "oTgZpwY_D0o3IU6kLE4LAYkvzUEk";
+
     // 创建订单
     @PostMapping("/create")
     public ResultVO<Map<String, String>> createOrder(@Valid OrderForm orderForm, BindingResult bindingResult) {
@@ -49,9 +51,11 @@ public class BuyerOrderController {
 
         OrderDTO orderDTO = OrderForm2OrderDTOConverter.convert(orderForm);
         if (CollectionUtils.isEmpty(orderDTO.getOrderDetailList())) {
+
             log.error("【创建订单】购物车不能为空，orderDTO:{}", orderDTO);
             throw new SellerException(ResultEnums.CART_NOT_EMPTY);
         }
+//        orderDTO.setBuyerOpenid(PAY_OPENID);
         OrderDTO orderResult = orderService.create(orderDTO);
 
         Map<String, String> map = new HashMap<>();

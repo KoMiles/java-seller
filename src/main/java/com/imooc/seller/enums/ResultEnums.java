@@ -14,7 +14,8 @@ public enum ResultEnums {
     CART_NOT_EMPTY(18, "购物车不能为空"),
     ORDER_OWNER_ERROR(19, "不是你的订单"),
     WECHART_MP_ERROR(20, "微信授权错误"),
-
+    ORDER_NOT_EXIST(21,"订单不存在"),
+    ORDER_AMOUNT_NOT_EQUAL(22,"订单金额不一致"),
     ;
 
     private Integer code;

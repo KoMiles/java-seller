@@ -13,6 +13,7 @@ import com.imooc.seller.exception.SellerException;
 import com.imooc.seller.repository.OrderDetailRepository;
 import com.imooc.seller.repository.OrderMasterRepository;
 import com.imooc.seller.service.OrderService;
+import com.imooc.seller.service.PayService;
 import com.imooc.seller.service.ProductInfoService;
 import com.imooc.seller.utils.KeyUtil;
 import java.math.BigDecimal;
@@ -43,6 +44,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrderMasterRepository orderMasterRepository;
+
+    @Autowired
+    private PayService payService;
 
     @Override
     @Transactional
@@ -145,7 +149,7 @@ public class OrderServiceImpl implements OrderService {
 
         // 如果已支付，需要退款
         if (orderDTO.getPayStatus().equals(PayStatusEnums.SUCCESS_PAY.getCode())) {
-            // TODO
+            payService.refund(orderDTO);
         }
         return orderDTO;
     }

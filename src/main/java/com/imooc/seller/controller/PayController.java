@@ -6,6 +6,7 @@ import com.imooc.seller.exception.SellerException;
 import com.imooc.seller.service.OrderService;
 import com.imooc.seller.service.PayService;
 import com.imooc.seller.service.impl.OrderServiceImpl;
+import com.imooc.seller.service.impl.PayServiceImpl;
 import com.lly835.bestpay.model.PayResponse;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -15,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,7 +32,7 @@ public class PayController {
     private OrderServiceImpl orderService;
 
     @Autowired
-    private PayService payService;
+    private PayServiceImpl payService;
 
     @GetMapping("/create")
     public ModelAndView create(@RequestParam("orderId") String orderId,
@@ -57,7 +59,9 @@ public class PayController {
     }
 
     @PostMapping("/notify")
-    public void notifyUrl(@ResponseBody String notifyData) {
-
+    public ModelAndView notifyUrl(@RequestBody String notifyData) {
+        log.error("[支付异步通知] 返回数据={}", notifyData);
+        payService.notify(notifyData);
+        return new ModelAndView("pay/success");
     }
 }

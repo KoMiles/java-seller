@@ -7,7 +7,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.1.9:3306/seller?characterEncoding=utf-8
+    url: jdbc:mysql://192.168.1.8:3306/seller?characterEncoding=utf-8
     username: root
     password: 123456
   jpa:
@@ -16,6 +16,13 @@ spring:
     default-property-inclusion: non_null
   freemarker:
     suffix: .ftl
+#    template-loader-path: classpath:/templates/
+#    charset: utf-8
+#    check-template-location: true
+#    expose-request-attributes: false
+#    expose-session-attributes: false
+#    cache: false
+#    content-type: text/html
 server:
   servlet:
     context-path: /sell

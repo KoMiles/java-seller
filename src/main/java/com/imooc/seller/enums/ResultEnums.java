@@ -16,6 +16,13 @@ public enum ResultEnums {
     WECHART_MP_ERROR(20, "微信授权错误"),
     ORDER_NOT_EXIST(21,"订单不存在"),
     ORDER_AMOUNT_NOT_EQUAL(22,"订单金额不一致"),
+    ORDER_CANCEL_SUCCESS(23,"订单取消成功"),
+    ORDER_FINISH_SUCCESS(24,"订单完结成功"),
+    PRODUCT_STATUS_ERROR(25,"商品状态不正确"),
+    PRODUCT_ONSALE_SUCCESS(26,"商品上架"),
+    PRODUCT_OFFSALE_SUCCESS(27,"商品下架"),
+    PRODUCT_SAVE_SUCCESS(28,"商品新增成功"),
+    CATEGORY_SAVE_SUCCESS(29,"类目新增成功"),
     ;
 
     private Integer code;

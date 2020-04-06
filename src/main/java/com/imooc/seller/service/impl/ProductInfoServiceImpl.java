@@ -77,4 +77,30 @@ public class ProductInfoServiceImpl implements ProductInfoService {
             repository.save(productInfo);
         }
     }
+
+    @Override
+    public ProductInfo onSale(String productId) {
+        ProductInfo productInfo = findOne(productId);
+        if(productInfo == null) {
+            throw  new SellerException(ResultEnums.PRODUCT_NOT_EXIST);
+        }
+        if(productInfo.getProductStatus() == ProductStatusEnums.UP.getCode()) {
+            throw  new SellerException(ResultEnums.PRODUCT_STATUS_ERROR);
+        }
+        productInfo.setProductStatus(ProductStatusEnums.UP.getCode());
+        return repository.save(productInfo);
+    }
+
+    @Override
+    public ProductInfo offSale(String productId) {
+        ProductInfo productInfo = findOne(productId);
+        if(productInfo == null) {
+            throw  new SellerException(ResultEnums.PRODUCT_NOT_EXIST);
+        }
+        if(productInfo.getProductStatus() == ProductStatusEnums.DONW.getCode()) {
+            throw  new SellerException(ResultEnums.PRODUCT_STATUS_ERROR);
+        }
+        productInfo.setProductStatus(ProductStatusEnums.DONW.getCode());
+        return repository.save(productInfo);
+    }
 }
